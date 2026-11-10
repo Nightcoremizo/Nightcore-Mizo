@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+<style>body{font-family:Arial;background:#111;display:flex;justify-content:center;padding:20px}.box{background:#fff;padding:25px;border-radius:15px;width:100%;max-width:400px}input{width:100%;padding:12px;margin:8px 0 15px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box}button{width:100%;padding:13px;background:#000;color:#fff;border:none;border-radius:8px;font-weight:bold;cursor:pointer}a{color:blue;text-align:center;display:block;margin-top:15px}</style>
+</head>
+<body>
+<div class="box">
+<h2 style="text-align:center;">Register</h2>
+<form id="myForm">
+<input id="hming" type="text" placeholder="An Hming" required>
+<input id="pian" type="date" required>
+<input id="wa" type="tel" placeholder="WhatsApp Number" required>
+<input id="insta" type="text" placeholder="Instagram Username" required>
+<button type="submit" id="btn">Submit</button>
+<p id="msg" style="display:none;color:green;text-align:center;">✓ Submit Success!</p>
+</form>
+<a href="login.html">Login Page ah kal rawh</a>
+</div>
+<script>
+const SCRIPT_URL = "I_GOOGLE_SCRIPT_LINK_AN_HI_AH_DAH_RAWH";
+document.getElementById("myForm").addEventListener("submit", e=>{
+ e.preventDefault();
+ document.getElementById("btn").innerText="Submit mek...";
+ const data={Hming:document.getElementById("hming").value,PianNi:document.getElementById("pian").value,WhatsApp:document.getElementById("wa").value,Instagram:document.getElementById("insta").value};
+ fetch(SCRIPT_URL,{method:"POST",body:JSON.stringify(data),mode:"no-cors"}).then(()=>{
+   document.getElementById("msg").style.display="block";
+   document.getElementById("btn").innerText="Submit";
+   document.getElementById("myForm").reset();
+ });
+});
+</script>
+</body>
+</html>
